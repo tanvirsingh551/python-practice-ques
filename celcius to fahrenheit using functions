@@ -1,0 +1,4 @@
+def converter(c):
+    return (9*c)/5+32
+c_to_f=converter(100)
+print(f"{c_to_f} degree fahrenheit")
