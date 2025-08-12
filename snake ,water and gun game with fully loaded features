@@ -1,0 +1,115 @@
+mode_of_play = input("""Select mode:
+- For Player vs Player enter: p2p
+- For Player vs Computer enter: p2c
+ENTER: """).lower()
+flag=True
+playing={'replay':True,'quit':False}
+while flag==True:
+    if mode_of_play=='p2c':
+        import random
+        computer_score=0
+        player_score=0
+        scores={'s':1,'w':-1,'g':0}
+        explanation={1:'snake',-1:'water',0:'gun'}
+        no_of_rounds=int(input('No. of rounds per game :'))
+        your_name=input('Enter your name:')
+        print(f"welcome to TANVIR's first game {your_name}")
+        for y in range(no_of_rounds):
+            choice_1=input('enter "s" for snake, "w" for water and "g" for gun: ').lower()
+            while  choice_1 not in ['s','g','w']:
+                print("invalid choice, please select onlt from 's','w','g'")
+                choice_1=input('try again: ').lower()
+            computer_choice=random.choice([-1,0,1])
+            affiliated_scores=scores[choice_1]
+            print(f'you chose {explanation[affiliated_scores]}\ncomputer chose {explanation[computer_choice]}')
+            if (computer_choice==affiliated_scores):
+                print("it's a draw")
+            else:
+                if (computer_choice==-1 and affiliated_scores==1):
+                    print('Congrats you win!')
+                    player_score+=1
+                elif (computer_choice==-1 and affiliated_scores==0):
+                    print("congrats you win!")
+                    player_score+=1
+                elif (computer_choice==1 and affiliated_scores==-1):
+                    print("noob, you lost")
+                    computer_score+=1
+                elif (computer_choice==1 and affiliated_scores==0):
+                    print("noob, you lost")
+                    computer_score+=1
+                elif (computer_choice==0 and affiliated_scores==-1):
+                    print("noob, you lost")
+                    computer_score+=1
+                elif (computer_choice==0 and affiliated_scores==1):
+                    print("congrats you win!")
+                    player_score+=1
+                else:
+                    print('you did something wrong!')
+        print(f"SCORES'\n'PLAYER 1 : {player_score}'\n'COMPUTER : {computer_score}'\n'")
+        if player_score>computer_score:
+                                        print('PLAYER  Wins!')
+        elif computer_score>player_score:
+                                        print('COMPUTER Wins!')
+        else:
+            print("It's a draw")
+
+
+    elif mode_of_play=='p2p':
+        player1_score=0
+        player2_score=0
+
+        player1=input('Enter your name:')
+        player2=input('Enter your name:')
+        print(f"welcome to TANVIR's first game {player1} and {player2}")
+        no_of_rounds=int(input('No. of rounds per game :'))
+        scores={'s':1,'w':-1,'g':0}
+        explanation={1:'snake',-1:'water',0:'gun'}
+        for x in range(no_of_rounds):
+            choice_1=input('enter "s" for snake, "w" for water and "g" for gun: ').lower()
+            while  choice_1 not in ['s','g','w']:
+                print("invalid choice, please select onlt from 's','w','g'")
+                choice_1=input('try again: ').lower()
+            print('\n'*30) #to hide player 1 choice
+            choice_2=input('enter "s" for snake, "w" for water and "g" for gun: ').lower()
+            while  choice_2 not in ['s','g','w']:
+                print("invalid choice, please select onlt from 's','w','g'")
+                choice_2=input('try again: ').lower()
+            affiliated_scores1=scores[choice_1]
+            affiliated_scores2=scores[choice_2]        
+            print(f'Player1  {explanation[affiliated_scores1]}\nPlayer 2  chose {explanation[affiliated_scores2]}')
+            if (affiliated_scores2==affiliated_scores1):
+                print("it's a draw")
+            else:
+                if (affiliated_scores1==-1 and affiliated_scores2==1):
+                    print('Congrats PLayer 2 win!')
+                    player2_score+=1
+                elif (affiliated_scores1==-1 and affiliated_scores2==0):
+                        print("congrats player 2 win!")
+                        player2_score+=1
+                elif (affiliated_scores1==1 and affiliated_scores2==-1):
+                    print("noob, player 2 lost")
+                    player1_score+=1
+                elif (affiliated_scores1==1 and affiliated_scores2==0):
+                    print("noob, player 2 lost")
+                    player1_score+=1
+                elif (affiliated_scores1==0 and affiliated_scores2==-1):
+                    print("noob, player 2 lost")
+                    player1_score+=1
+                elif (affiliated_scores1==0 and affiliated_scores2==1):
+                    print("congrats player 2 win!")
+                    player2_score+=1
+                else:
+                    print('you did something wrong!')
+        print(f"SCORES'\n'PLAYER 1 : {player1_score}'\n'PLAYER 2 : {player2_score}'\n'")
+        if player1_score>player2_score:
+                                        print('PLAYER 1 Wins!')
+        elif player2_score>player1_score:
+                                        print('PLAYER 2 Wins!')
+        else:
+            print("It's a draw")
+    wish=input('REPLAY OR QUIT''\n').lower()    
+    if wish=='replay':
+            flag=True
+    elif wish=='quit':
+            flag=False
+            print('Thanks for playing!')
