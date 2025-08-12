@@ -1,4 +1,14 @@
-def converter(c):
-    return (9*c)/5+32
-c_to_f=converter(100)
-print(f"{c_to_f} degree fahrenheit")
+Celcius_or_Fahrenheit=str(input('enter c or f :'))
+
+if Celcius_or_Fahrenheit=='c':
+    def converter(c):
+       return (9*c)/5+32
+    c=int(input('enter a temp in celcius: '))
+    c_to_f=converter(c)
+    print(f"{c_to_f} degree fahrenheit")
+elif Celcius_or_Fahrenheit=='f':
+    def converter(f):
+       return ((f-32)*5)/9
+    f=int(input('enter a temp in fahrenheit: '))
+    f_to_c=converter(f)
+    print(f"{f_to_c} degree celcius")
