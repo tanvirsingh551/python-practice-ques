@@ -1,0 +1,8 @@
+def greet():
+    name=input('enter your name: ')
+    print(f'{name} have a good day')
+greet()
+greet()
+greet()
+greet()
+greet()
